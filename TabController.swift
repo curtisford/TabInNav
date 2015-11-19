@@ -10,9 +10,6 @@ import UIKit
 
 class TabController: UITabBarController {
     
-    @IBAction func addMeme(sender: UIButton) {
-        performSegueWithIdentifier("editorSegue", sender: nil)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
