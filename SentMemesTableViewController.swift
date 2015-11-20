@@ -20,9 +20,21 @@ class SentMemesTableViewController: UITableViewController {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
     }
     
+    //make sure top row of table isn't under the navigation bar
+    //see http://stackoverflow.com/questions/24468831/uitableview-goes-under-translucent-navigation-bar
+    override func viewDidLayoutSubviews() {
+        if let rect = self.navigationController?.navigationBar.frame {
+            let y = rect.size.height + rect.origin.y
+            self.tableView.contentInset = UIEdgeInsetsMake(y, 0, 0, 0)
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("in viewDidLoad of SentMemesTableViewController")
+        
+        //self.tableView.contentInset = UIEdgeInsetsMake(88, 0, 0, 0)
         
 //        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "makeNewMeme")
 //        self.navigationItem.rightBarButtonItem = addButton
@@ -40,6 +52,7 @@ class SentMemesTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.navigationItem.hidesBackButton = true
+        print("in viewWillAppear for tableview, about to reload data; self.memes.count is \(self.memes.count)")
         tableView.reloadData()
     }
 
@@ -55,7 +68,8 @@ class SentMemesTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.memes.count
+        print("in numberOfRows.. self.memes.count is \(self.memes.count)")
+        return memes.count
     }
 
     
@@ -80,10 +94,10 @@ class SentMemesTableViewController: UITableViewController {
         rowTapped = indexPath.row
         print("rowTapped is \(rowTapped)")
         
-//        let detailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("displayMeme") as! SentMemesDisplayViewController
-//        detailViewController.displayView = self.memes[indexPath.row]
-//        print("still in didSelectRow.. detailViewController.displayView is \(detailViewController.displayView)")
-//        self.navigationController!.pushViewController(detailViewController, animated: true)
+        let detailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("displayMeme") as! SentMemesDisplayViewController
+        detailViewController.displayView = self.memes[indexPath.row]
+        print("still in didSelectRow.. detailViewController.displayView is \(detailViewController.displayView)")
+        self.navigationController!.pushViewController(detailViewController, animated: true)
         
     }
     
