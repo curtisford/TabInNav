@@ -34,6 +34,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         
         print("in viewDidLoad of ViewController.swift; presenting viewcontroller is \(self.presentingViewController)")
         
+        shareButton.enabled = false
+        
         let memeTextAttributes = [
             
             NSStrokeColorAttributeName : UIColor.blackColor(),
@@ -131,17 +133,19 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         bottomField.resignFirstResponder()
         topField.resignFirstResponder()
         
-        //        let alertView = UIAlertController(title: "Cancel meme", message: "Are you sure you don't want to keep this meme?", preferredStyle: .Alert)
-        //        alertView.addAction(UIAlertAction(title: "Delete meme", style: .Default, handler: { (alertAction) -> Void in
-        //            self.throwMemeAway()
-        //        }))
-        //        alertView.addAction(UIAlertAction(title: "Keep meme", style: .Cancel, handler: nil))
-        //        presentViewController(alertView, animated: true, completion: nil)
+                let alertView = UIAlertController(title: "Cancel meme", message: "Are you sure you don't want to keep this meme?", preferredStyle: .Alert)
+                alertView.addAction(UIAlertAction(title: "Delete meme", style: .Default, handler: { (alertAction) -> Void in
+                    self.throwMemeAway()
+                }))
+                alertView.addAction(UIAlertAction(title: "Keep meme", style: .Cancel, handler: nil))
+                presentViewController(alertView, animated: true, completion: nil)
         
         //go back to where you came from
         print("presentingViewController is \(presentingViewController)")
         //oops - presentingViewController may be nil if you're coming from a button in a tabbarcontroller
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        //presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        self.performSegueWithIdentifier("unwindToTabController", sender: self)
+
         
     }
     
@@ -175,6 +179,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             theImage.image = image
+            shareButton.enabled = true
         }
         dismissViewControllerAnimated(true, completion: nil)
     }

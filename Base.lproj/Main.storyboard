@@ -25,12 +25,12 @@
             </objects>
             <point key="canvasLocation" x="-154" y="1071"/>
         </scene>
-        <!--Tab Controller-->
+        <!--Sent Memes-->
         <scene sceneID="jpQ-1n-1V5">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Gga-Jy-t73" customClass="TabController" customModule="TabInNav" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="10Y-Oc-w2n">
+                    <navigationItem key="navigationItem" title="Sent Memes" id="10Y-Oc-w2n">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="pSm-Vu-3DT">
                             <connections>
                                 <segue destination="lUr-DJ-Uet" kind="show" id="g8j-aj-ra0"/>
@@ -56,32 +56,49 @@
         <scene sceneID="f68-8d-VVK">
             <objects>
                 <tableViewController title="Table" clearsSelectionOnViewWillAppear="NO" id="dni-M5-c96" customClass="SentMemesTableViewController" customModule="TabInNav" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="EC3-ef-em2">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" id="EC3-ef-em2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="HKe-fB-vNR" customClass="SentMemesTableViewCell" customModule="TabInNav" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="55" id="HKe-fB-vNR" customClass="SentMemesTableViewCell" customModule="TabInNav" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HKe-fB-vNR" id="g2P-Sr-bxV">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Si-Nm-EF0">
-                                            <rect key="frame" x="8" y="0.0" width="77" height="44"/>
-                                            <animations/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBe-4a-LYN">
-                                            <rect key="frame" x="93" y="11" width="499" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBe-4a-LYN">
+                                            <rect key="frame" x="116" y="11" width="476" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="17"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Si-Nm-EF0">
+                                            <rect key="frame" x="14" y="1" width="94" height="51"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="94" id="mnk-Uy-I8O"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstItem="0Si-Nm-EF0" firstAttribute="top" secondItem="g2P-Sr-bxV" secondAttribute="topMargin" constant="-7" id="6OK-lx-VcA"/>
+                                        <constraint firstItem="oBe-4a-LYN" firstAttribute="leading" secondItem="0Si-Nm-EF0" secondAttribute="trailing" constant="8" symbolic="YES" id="Raa-f4-bLx"/>
+                                        <constraint firstItem="oBe-4a-LYN" firstAttribute="trailing" secondItem="g2P-Sr-bxV" secondAttribute="trailingMargin" id="WFj-Ux-hUL"/>
+                                        <constraint firstItem="0Si-Nm-EF0" firstAttribute="top" secondItem="g2P-Sr-bxV" secondAttribute="topMargin" constant="-7" id="ZWH-1L-0ho"/>
+                                        <constraint firstItem="0Si-Nm-EF0" firstAttribute="leading" secondItem="g2P-Sr-bxV" secondAttribute="leadingMargin" constant="6" id="jg9-W6-kxq"/>
+                                        <constraint firstItem="oBe-4a-LYN" firstAttribute="top" secondItem="g2P-Sr-bxV" secondAttribute="topMargin" constant="3" id="yie-EM-XOh"/>
+                                        <constraint firstItem="0Si-Nm-EF0" firstAttribute="centerY" secondItem="g2P-Sr-bxV" secondAttribute="centerY" id="zic-sF-F1y"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="6OK-lx-VcA"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
@@ -96,7 +113,7 @@
                             <outlet property="delegate" destination="dni-M5-c96" id="HTq-sK-jfe"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Table" id="dGo-Tv-k5g"/>
+                    <tabBarItem key="tabBarItem" title="" image="mytable" selectedImage="mytable" id="dGo-Tv-k5g"/>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -119,7 +136,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2F0-5U-xES">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2F0-5U-xES">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <animations/>
                             </imageView>
@@ -257,7 +274,7 @@
                             <outlet property="delegate" destination="j9z-fw-7uo" id="jXp-Zx-nan"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Collection" id="TdJ-32-OKo"/>
+                    <tabBarItem key="tabBarItem" title="" image="mycollection" selectedImage="mycollection" id="TdJ-32-OKo"/>
                     <navigationItem key="navigationItem" title="Sent Memes" id="FjY-w4-xdo"/>
                     <connections>
                         <segue destination="74i-yx-15r" kind="show" identifier="displayMemeSegue" id="6AS-8y-96g"/>
@@ -279,13 +296,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zH8-fF-FER">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zH8-fF-FER">
+                                <rect key="frame" x="0.0" y="64" width="600" height="500"/>
                                 <animations/>
                             </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zH8-fF-FER" firstAttribute="top" secondItem="H3b-oC-X19" secondAttribute="bottom" id="3JA-3Z-mfT"/>
+                            <constraint firstItem="zH8-fF-FER" firstAttribute="leading" secondItem="5k4-6b-kSp" secondAttribute="leading" id="8Kn-eJ-2ZP"/>
+                            <constraint firstItem="zH8-fF-FER" firstAttribute="bottom" secondItem="8pO-Ww-urL" secondAttribute="top" constant="8" symbolic="YES" id="FJx-yq-Vww"/>
+                            <constraint firstAttribute="trailing" secondItem="zH8-fF-FER" secondAttribute="trailing" id="klr-xS-R6c"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="memedImage" destination="zH8-fF-FER" id="icp-51-bTX"/>
@@ -296,7 +319,11 @@
             <point key="canvasLocation" x="628" y="2742"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mycollection" width="31" height="21"/>
+        <image name="mytable" width="28" height="21"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6AS-8y-96g"/>
+        <segue reference="1V3-Tv-gfb"/>
     </inferredMetricsTieBreakers>
 </document>

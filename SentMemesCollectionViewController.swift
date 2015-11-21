@@ -8,7 +8,6 @@
 
 import UIKit
 
-//private let reuseIdentifier = "sentMemeCell"
 
 class SentMemesCollectionViewController: UICollectionViewController {
 
@@ -16,6 +15,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
     }
     
+    //used in didSelectItem... and prepareForSegue
     var cellTapped = 0
     
     //make sure top row of table isn't under the navigation bar
@@ -29,72 +29,39 @@ class SentMemesCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("in viewDidLoad of SentMemesCollectionViewController")
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "makeNewMeme:")
-        self.navigationItem.rightBarButtonItem = addButton
-
-        // Register cell classes
-        //self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func viewWillAppear(animated: Bool) {
         collectionView?.reloadData()
     }
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("starting didSelectItemAtIndexPath...")
-        cellTapped = indexPath.item
-        print("cellTapped is \(cellTapped)")
-        
-        let detailViewController = self.storyboard?.instantiateViewControllerWithIdentifier("displayMeme") as! SentMemesDisplayViewController
-        detailViewController.displayView = self.memes[indexPath.row]
-        print("still in didSelectItemAtIndexPath.. detailViewController.displayView is \(detailViewController.displayView)")
-        self.navigationController?.pushViewController(detailViewController, animated: true)
-    }
     
-//    // MARK: navigate to meme editor
-//    func makeNewMeme() {
-//        print("starting makeNewMeme")
-//        performSegueWithIdentifier("editMeme", sender: self)
-//    }
-
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 
     
     // MARK: - Navigation
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        cellTapped = indexPath.item
+        
+        let detailViewController = self.storyboard?.instantiateViewControllerWithIdentifier("displayMeme") as! SentMemesDisplayViewController
+        detailViewController.displayView = self.memes[indexPath.row]
+        self.navigationController?.pushViewController(detailViewController, animated: true)
+    }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
+        
         if (segue.identifier == "displayMemeSegue") {
             let detailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("displayMeme") as! SentMemesDisplayViewController
             detailViewController.displayView = self.memes[cellTapped]
-            print("still in prepareForSegue.. detailViewController.displayView is \(detailViewController.displayView)")
-            self.navigationController!.pushViewController(detailViewController, animated: true)
-        }
-        // Pass the selected object to the new view controller.
-    }
-    
-    /*PASTED IN FROM TABLEVIEWCONTROLLER
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "displayMemeSegue") {
-            let detailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("displayMeme") as! SentMemesDisplayViewController
-            detailViewController.displayView = self.memes[rowTapped]
-            print("still in didSelectRow.. detailViewController.displayView is \(detailViewController.displayView)")
             self.navigationController!.pushViewController(detailViewController, animated: true)
         }
     }
-*/
     
 
     // MARK: UICollectionViewDataSource
@@ -118,6 +85,8 @@ class SentMemesCollectionViewController: UICollectionViewController {
     
         return cell
     }
+    
+
 
     // MARK: UICollectionViewDelegate
 
